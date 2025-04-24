@@ -15,7 +15,7 @@ st.set_page_config(
 # title of app
 st.title('🌷 Simple Prediction App')
 
-df = pd.read_csv('https://raw.githubusercontent.com/dataprofessor/data/master/iris.csv')
+df = pd.read_csv('https://raw.githubusercontent.com/jiwonshin84/basic_iris/refs/heads/main/Data/Iris.csv')
 st.write(df)
 
 # input widgets
