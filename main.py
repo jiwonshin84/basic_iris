@@ -17,6 +17,7 @@ st.title('🌷 Simple Prediction App')
 
 df = pd.read_csv('https://raw.githubusercontent.com/jiwonshin84/basic_iris/refs/heads/main/Data/Iris.csv')
 
+st.write(df)
 
 df.columns= [ col_name.split('Cm')[0] for col_name in df.columns] # 컬럼명을 뒤에 cm 제거
 
@@ -30,9 +31,6 @@ sepal_width = st.sidebar.slider('Sepal width', 2.0, 4.4, 3.1)
 petal_length = st.sidebar.slider('Petal length', 1.0, 6.9, 3.8)
 petal_width = st.sidebar.slider('Petal width', 0.1, 2.5, 1.2)
 
-
-
-# df = df.drop(columns=['Id']) # id 컬럼 제거 
 
 # 예측 모델 생성
 # Separate X and y
