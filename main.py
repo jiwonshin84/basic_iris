@@ -32,7 +32,7 @@ petal_width = st.sidebar.slider('Petal width', 0.1, 2.5, 1.2)
 
 
 
-df = df.drop(columns=['Id']) # id 컬럼 제거 
+# df = df.drop(columns=['Id']) # id 컬럼 제거 
 
 # 예측 모델 생성
 # Separate X and y
