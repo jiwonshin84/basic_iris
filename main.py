@@ -17,6 +17,8 @@ st.title('🌷 Simple Prediction App')
 
 df = pd.read_csv('https://raw.githubusercontent.com/jiwonshin84/basic_iris/refs/heads/main/Data/Iris.csv')
 
+df = df.drop(columns=['id']) # id 컬럼 제거
+
 df.columns= [ col_name.split('Cm')[0] for col_name in df.columns] # 컬럼명을 뒤에 cm 제거
 
 st.write(df)
