@@ -34,6 +34,7 @@ petal_width = st.sidebar.slider('Petal width', 0.1, 2.5, 1.2)
 
 # 예측 모델 생성
 # Separate X and y
+X = df.drop('Id', axis=1)
 X = df.drop('Species', axis=1)
 y = df.Species
 
