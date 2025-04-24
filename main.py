@@ -23,6 +23,9 @@ df.columns= [ col_name.split('Cm')[0] for col_name in df.columns] # 컬럼명을
 
 st.write(df)
 
+df = df.drop('Id', axis=1)
+
+st.write(df)
 
 # input widgets
 st.sidebar.subheader('Input Features')
