@@ -16,11 +16,13 @@ st.set_page_config(
 st.title('🌷 Simple Prediction App')
 
 df = pd.read_csv('https://raw.githubusercontent.com/jiwonshin84/basic_iris/refs/heads/main/Data/Iris.csv')
-st.write(df)
+
 
 df= pd.DataFrame(data=df.data,columns= df.feature_names)
 df.columns= [ col_name.split(' (cm)')[0] for col_name in df.columns] # 컬럼명을 뒤에 cm 제거하였습니다
 df['species']= df.target 
+
+st.write(df)
 
 # input widgets
 st.sidebar.subheader('Input Features')
