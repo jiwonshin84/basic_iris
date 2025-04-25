@@ -27,17 +27,12 @@ if st.sidebar.button('🌷 붓꽃 데이터'):
     st.empty()
     st.write(f"데이터 개수: {df.shape[0]}")  # 출력: 150
     st.write(f"중복 인덱스 수: {df.index.duplicated().sum()}")
+
+    # 인덱스 리셋 후 1부터 시작하도록 변경
+    df = df.reset_index(drop=True)  # 기존 인덱스를 제거하고 새로 리셋
+    df.index = df.index + 1  # 인덱스를 1부터 시작하도록 변경
     
-    #df = df.reset_index(drop=True)
-    st.write(df.tail())
-    # NaN 값이 있는지 확인
-    st.write(df.isna().sum())  # 각 열별 NaN 갯수 확인
-    
-    # NaN이 있는 행 제거
-    df = df.dropna()
-    st.write(f"데이터 개수: {df.shape[0]}")  # 150개가 정확히 나와야 함
-    st.write(df.tail())  # 마지막 5행 확인
-    st.write(df.index)
+    st.write(df)
 
 
 if st.sidebar.button('🎉 Brief EDA'):
