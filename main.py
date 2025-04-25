@@ -37,6 +37,7 @@ if st.sidebar.button('🌷 붓꽃 데이터'):
     df = df.dropna()
     st.write(f"데이터 개수: {df.shape[0]}")  # 150개가 정확히 나와야 함
     st.write(df.tail())  # 마지막 5행 확인
+    st.write(df.index)
 
 
 if st.sidebar.button('🎉 Brief EDA'):
