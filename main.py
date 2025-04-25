@@ -65,7 +65,7 @@ st.write(groupby_species_mean)
 # 슬라이더에 Input 한 컬럼 값을 데이터프레임으로 출력하기
 # print input Features
 input_feature = pd.DataFrame([[sepal_length, sepal_width, petal_length, petal_width]],
-                              columns = ['sepal_length', 'sepal_width', 'petal_length', 'petal_width'])
+                              columns = ['SepalLength', 'SepalWidth', 'PetalLength', 'PetalWidth'])
 st.write(input_feature)
 
 # 예측 결과값을 metric으로 출력
