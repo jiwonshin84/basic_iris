@@ -100,7 +100,7 @@ if st.session_state.show_slider:
     st.write(input_feature)
 
     # 예측 결과값을 metric으로 출력
-    prediction_placeholder.metric('💡 Predicted class', y_pred[0], '')
+    st.metric('💡 Predicted class', y_pred[0], '')
 
     # 🔮 예측
     y_proba = rf.predict_proba(input_feature)
