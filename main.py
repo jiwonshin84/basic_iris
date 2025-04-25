@@ -47,7 +47,7 @@ rf.fit(X_train, y_train)
 # 간단한 EDA_ 아이리스 종에 따른 4개 컬럼 평균 계산
 
 # print EDA
-st.subheader('Brief EDA')
+st.subheader('Brief EDA(간단한 탐색적 데이터 분석)')
 st.write('The data is grouped by the class and the variable mean is computed for each class.')
 groupby_species_mean = df.groupby('Species').mean()
 st.write(groupby_species_mean)
@@ -66,12 +66,10 @@ input_feature = pd.DataFrame([[sepal_length, sepal_width, petal_length, petal_wi
 st.write(input_feature)
 
 # 예측 결과값을 metric으로 출력
-st.subheader('Output')
 st.metric('Predicted class', y_pred[0], '')
 
 # 🔮 예측
 y_proba = rf.predict_proba(input_feature)
-
 
 # 📈 예측 확률 출력
 st.subheader("Prediction Probabilities")
