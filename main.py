@@ -67,7 +67,7 @@ if st.session_state.show_slider:
     rf = RandomForestClassifier(max_depth=2, max_features=4, n_estimators=200, random_state=42)
     rf.fit(X_train, y_train)
     
-    st.subheader('🌷 슬라이더 Input Features값 예측')
+    st.subheader('💡 Input Features값 예측')
     
     # Apply Model to make predictions
     y_pred = rf.predict([[sepal_length, sepal_width, petal_length, petal_width]])
@@ -80,7 +80,7 @@ if st.session_state.show_slider:
     st.write(input_feature)
 
     # 예측 결과값을 metric으로 출력
-    st.metric('Predicted class', y_pred[0], '')
+    st.metric('💡 Predicted class', y_pred[0], '')
 
     # 🔮 예측
     y_proba = rf.predict_proba(input_feature)
