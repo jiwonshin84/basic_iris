@@ -43,9 +43,11 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 rf = RandomForestClassifier(max_depth=2, max_features=4, n_estimators=200, random_state=42)
 rf.fit(X_train, y_train)
 
+
+st.subheader('🌷 예측')
+
 # Apply Model to make predictions
 y_pred = rf.predict([[sepal_length, sepal_width, petal_length, petal_width]])
-st.subtitle('🌷 예측')
 st.write(y_pred)
 
 # 간단한 EDA_ 아이리스 종에 따른 4개 컬럼 평균 계산
