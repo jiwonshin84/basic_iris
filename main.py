@@ -28,6 +28,14 @@ if st.sidebar.button('🌷 붓꽃 데이터'):
     st.write(f"데이터 개수: {df.shape[0]}")  # 출력: 150
     df = df.reset_index(drop=True)
     st.write(df.tail())
+    # NaN 값이 있는지 확인
+    st.write(df.isna().sum())  # 각 열별 NaN 갯수 확인
+    
+    # NaN이 있는 행 제거
+    df = df.dropna()
+    st.write(f"데이터 개수: {df.shape[0]}")  # 150개가 정확히 나와야 함
+    st.write(df.tail())  # 마지막 5행 확인
+
 
 if st.sidebar.button('🎉 Brief EDA'):
     st.empty()
