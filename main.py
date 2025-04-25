@@ -54,12 +54,13 @@ if st.sidebar.button('🌷 붓꽃 데이터'):
 
 if st.sidebar.button('🎉 Brief EDA'):
     placeholder.empty()  # 이전 데이터를 지움
-    st.empty()  # 기존 EDA 결과 삭제
     
     # 간단한 EDA_ 아이리스 종에 따른 4개 컬럼 평균 계산
     # print EDA
     st.subheader('Brief EDA(간단한 탐색적 데이터 분석)')
     st.write('The data is grouped by the class and the variable mean is computed for each class.')
+
+    # Groupby Species and calculate the mean of each feature
     groupby_species_mean = df.groupby('Species').mean()
     st.write(groupby_species_mean)
 
