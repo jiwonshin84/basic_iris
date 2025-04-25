@@ -32,10 +32,7 @@ if st.sidebar.button('🌷 붓꽃 데이터'):
     df = df.reset_index(drop=True)  # 기존 인덱스를 제거하고 새로 리셋
     df.index = df.index + 1  # 인덱스를 1부터 시작하도록 변경
     
-    # 정렬된 데이터프레임 출력
-    df_styled = df.style.set_properties(**{'text-align': 'center'})
-    
-    st.write(df_styled.render(), unsafe_allow_html=True)
+    st.write(df)
 
 if st.sidebar.button('🎉 Brief EDA'):
     st.empty()
