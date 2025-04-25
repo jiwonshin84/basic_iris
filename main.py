@@ -93,3 +93,9 @@ ax.set_xlabel("Predicted")
 ax.set_ylabel("Actual")
 st.pyplot(fig)
 
+
+if st.sidebar.button('Click Me'):
+    st.sidebar.write("버튼이 클릭되었습니다!")
+else:
+    st.sidebar.write("버튼을 클릭해 주세요.")
+
