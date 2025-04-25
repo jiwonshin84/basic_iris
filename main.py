@@ -25,6 +25,7 @@ df = df.drop('Id', axis=1)
 
 if st.sidebar.button('🌷 붓꽃 데이터'):
     st.empty()
+    df = df.reset_index(drop=True)
     st.write(df)
 
 if st.sidebar.button('🎉 Brief EDA'):
