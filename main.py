@@ -26,9 +26,7 @@ df = df.drop('Id', axis=1)
 if st.sidebar.button('🌷 붓꽃 데이터'):
     st.empty()
 
-    st.markdown(f"데이터 개수: {df.shape[0]}  &nbsp; 중복 인덱스 수: {df.index.duplicated().sum()}", unsafe_allow_html=True)
-    st.write(f"데이터 개수: {df.shape[0]}")  # 출력: 150
-    st.write(f"중복 인덱스 수: {df.index.duplicated().sum()}")
+    st.markdown(f"데이터 개수: {df.shape[0]}  &nbsp; /중복 인덱스 수: {df.index.duplicated().sum()}", unsafe_allow_html=True)
 
     # 인덱스 리셋 후 1부터 시작하도록 변경
     df = df.reset_index(drop=True)  # 기존 인덱스를 제거하고 새로 리셋
