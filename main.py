@@ -69,6 +69,9 @@ st.write(input_feature)
 st.subheader('Output')
 st.metric('Predicted class', y_pred[0], '')
 
+# 🔮 예측
+y_pred = rf.predict(input_feature)
+y_proba = rf.predict_proba(input_feature)
 
 
 # 📈 예측 확률 출력
