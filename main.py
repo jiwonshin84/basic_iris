@@ -66,10 +66,14 @@ if st.sidebar.button('🎉 Brief EDA'):
 
     # DataFrame의 요약 정보 표시
     st.subheader('DataFrame Info')
-    df_info = st.empty()  # DataFrame 정보 영역을 비워둘 공간
-    with df_info:
-        #st.write("DataFrame 정보 (info()):")
-        st.write(df.info())  # DataFrame의 요약 정보 출력
+    
+    # df.info()를 StringIO를 사용하여 문자열로 캡처
+    buffer = StringIO()
+    df.info(buf=buffer)
+    s = buffer.getvalue()
+
+    # 출력된 정보를 Streamlit에서 표시
+    st.text(s)  # 텍스트로 출력
 
 
 if "show_slider" not in st.session_state:
