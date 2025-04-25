@@ -19,15 +19,8 @@ st.set_page_config(
 st.title('🌷 Simple Prediction App')
 
 df = pd.read_csv('https://raw.githubusercontent.com/jiwonshin84/basic_iris/refs/heads/main/Data/Iris.csv')
-
-st.write(df)
-
 df.columns= [ col_name.split('Cm')[0] for col_name in df.columns] # 컬럼명을 뒤에 cm 제거
-
-st.write(df)
-
 df = df.drop('Id', axis=1)
-
 st.write(df)
 
 # input widgets
