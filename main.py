@@ -16,12 +16,17 @@ st.set_page_config(
 )
 
 # title of app
-st.title('🌷 붓꽃 데이터 150개')
+st.title('🌷 붓꽃 데이터 실습')
 
 df = pd.read_csv('https://raw.githubusercontent.com/jiwonshin84/basic_iris/refs/heads/main/Data/Iris.csv')
 df.columns= [ col_name.split('Cm')[0] for col_name in df.columns] # 컬럼명을 뒤에 cm 제거
 df = df.drop('Id', axis=1)
-st.write(df)
+
+if st.sidebar.button('🌷 붓꽃 데이터)'):
+    st.empty()
+    st.write(df)
+else :
+    st.sidebar.write("버튼을 클릭해 주세요.")    
 
 # input widgets
 st.sidebar.subheader('Input Features')
