@@ -63,6 +63,13 @@ if st.sidebar.button('🎉 Brief EDA'):
     groupby_species_mean = df.groupby('Species').mean()
     st.write(groupby_species_mean)
 
+    # DataFrame의 요약 정보 표시
+    st.subheader('DataFrame Info')
+    df_info = st.empty()  # DataFrame 정보 영역을 비워둘 공간
+    with df_info:
+        st.write("DataFrame 정보 (info()):")
+        df.info()  # DataFrame의 요약 정보 출력
+
 
 if "show_slider" not in st.session_state:
     st.session_state.show_slider = False
