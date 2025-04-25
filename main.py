@@ -38,8 +38,13 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
+# 화면 비우기
+empty_space = st.empty()  # 빈 공간 할당
+
+
+
 if st.sidebar.button('🌷 붓꽃 데이터'):
-    st.empty()
+    empty_space.empty()
     st.markdown(f"<h3 style='font-size: 24px;'>데이터 개수: {df.shape[0]}  &nbsp; / 중복 인덱스 수: {df.index.duplicated().sum()}", unsafe_allow_html=True)
 
     # 인덱스 리셋 후 1부터 시작하도록 변경
