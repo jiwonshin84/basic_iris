@@ -70,7 +70,6 @@ st.subheader('Output')
 st.metric('Predicted class', y_pred[0], '')
 
 # 🔮 예측
-y_pred = rf.predict(input_feature)
 y_proba = rf.predict_proba(input_feature)
 
 
