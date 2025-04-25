@@ -61,10 +61,6 @@ if st.sidebar.button('✔ 새로운 데이터 예측'):
     rf = RandomForestClassifier(max_depth=2, max_features=4, n_estimators=200, random_state=42)
     rf.fit(X_train, y_train)
     
-    
-    
-    
-    
     st.subheader('🌷 슬라이더 Input Features값 예측')
     
     # Apply Model to make predictions
@@ -80,17 +76,17 @@ if st.sidebar.button('✔ 새로운 데이터 예측'):
     # 예측 결과값을 metric으로 출력
     st.metric('Predicted class', y_pred[0], '')
 
-# 🔮 예측
-y_proba = rf.predict_proba(input_feature)
-
-# 📈 예측 확률 출력
-st.subheader("📈 예측 확률")
-prob_df = pd.DataFrame(data=y_proba, columns=rf.classes_)
-st.write(prob_df)
-
-
-
+    # 🔮 예측
+    y_proba = rf.predict_proba(input_feature)
     
+    # 📈 예측 확률 출력
+    st.subheader("📈 예측 확률")
+    prob_df = pd.DataFrame(data=y_proba, columns=rf.classes_)
+    st.write(prob_df)
+
+        
+        
+            
 
 if st.sidebar.button('📊Confusion Matrix'):
     # 📊 Confusion Matrix
