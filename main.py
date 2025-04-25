@@ -44,13 +44,7 @@ rf = RandomForestClassifier(max_depth=2, max_features=4, n_estimators=200, rando
 rf.fit(X_train, y_train)
 
 
-# 간단한 EDA_ 아이리스 종에 따른 4개 컬럼 평균 계산
 
-# print EDA
-st.subheader('Brief EDA(간단한 탐색적 데이터 분석)')
-st.write('The data is grouped by the class and the variable mean is computed for each class.')
-groupby_species_mean = df.groupby('Species').mean()
-st.write(groupby_species_mean)
 
 
 st.subheader('🌷 슬라이더 Input Features값 예측')
@@ -77,7 +71,20 @@ prob_df = pd.DataFrame(data=y_proba, columns=rf.classes_)
 st.write(prob_df)
 
 
-if st.sidebar.button('Confusion Matrix'):
+if st.sidebar.button('🎉 Brief EDA(간단한 탐색적 데이터 분석)'):
+    st.empty()
+    # 간단한 EDA_ 아이리스 종에 따른 4개 컬럼 평균 계산
+
+    # print EDA
+    st.subheader('Brief EDA(간단한 탐색적 데이터 분석)')
+    st.write('The data is grouped by the class and the variable mean is computed for each class.')
+    groupby_species_mean = df.groupby('Species').mean()
+    st.write(groupby_species_mean)
+else:
+    st.sidebar.write("버튼을 클릭해 주세요.")    
+    
+
+if st.sidebar.button('📊Confusion Matrix'):
     # 📊 Confusion Matrix
     st.subheader("📊 Confusion Matrix (on Test Set)")
 
