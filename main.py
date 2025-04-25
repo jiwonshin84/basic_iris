@@ -38,28 +38,33 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
+# Create a placeholder to dynamically update content
+data_placeholder = st.empty()
+eda_placeholder = st.empty()
+prediction_placeholder = st.empty()
+cm_placeholder = st.empty()
 
 
 
 if st.sidebar.button('🌷 붓꽃 데이터'):
-    st.empty()
-    st.markdown(f"<h3 style='font-size: 24px;'>데이터 개수: {df.shape[0]}  &nbsp; / 중복 인덱스 수: {df.index.duplicated().sum()}", unsafe_allow_html=True)
+    data_placeholder.empty()  # 기존 데이터 삭제
+    data_placeholder.markdown(f"<h3 style='font-size: 24px;'>데이터 개수: {df.shape[0]}  &nbsp; / 중복 인덱스 수: {df.index.duplicated().sum()}", unsafe_allow_html=True)
 
     # 인덱스 리셋 후 1부터 시작하도록 변경
     df = df.reset_index(drop=True)  # 기존 인덱스를 제거하고 새로 리셋
     df.index = df.index + 1  # 인덱스를 1부터 시작하도록 변경
     
-    st.write(df)
+    data_placeholder.write(df)
 
 if st.sidebar.button('🎉 Brief EDA'):
-    st.empty()
+    eda_placeholder.empty()  # 기존 EDA 결과 삭제
+    
     # 간단한 EDA_ 아이리스 종에 따른 4개 컬럼 평균 계산
-
     # print EDA
-    st.subheader('Brief EDA(간단한 탐색적 데이터 분석)')
-    st.write('The data is grouped by the class and the variable mean is computed for each class.')
+    eda_placeholder.subheader('Brief EDA(간단한 탐색적 데이터 분석)')
+    eda_placeholder.write('The data is grouped by the class and the variable mean is computed for each class.')
     groupby_species_mean = df.groupby('Species').mean()
-    st.write(groupby_species_mean)
+    eda_placeholder.write(groupby_species_mean)
 
 
 if "show_slider" not in st.session_state:
@@ -70,7 +75,7 @@ if st.sidebar.button("✔ 새로운 데이터 예측"):
     st.session_state.show_slider = True
 
 if st.session_state.show_slider:
-    st.empty()
+    prediction_placeholder.empty()  # 기존 예측 결과 삭제
     # input widgets
     st.sidebar.subheader('Input Features')
     sepal_length = st.sidebar.slider('Sepal length', 4.3, 7.9, 5.8)
@@ -90,7 +95,7 @@ if st.session_state.show_slider:
     rf = RandomForestClassifier(max_depth=2, max_features=4, n_estimators=200, random_state=42)
     rf.fit(X_train, y_train)
     
-    st.subheader('💡 Input Features값 예측')
+    prediction_placeholder.subheader('💡 Input Features값 예측')
     
     # Apply Model to make predictions
     y_pred = rf.predict([[sepal_length, sepal_width, petal_length, petal_width]])
@@ -100,24 +105,24 @@ if st.session_state.show_slider:
     # print input Features
     input_feature = pd.DataFrame([[sepal_length, sepal_width, petal_length, petal_width]],
                                   columns = ['SepalLength', 'SepalWidth', 'PetalLength', 'PetalWidth'])
-    st.write(input_feature)
+    prediction_placeholder.write(input_feature)
 
     # 예측 결과값을 metric으로 출력
-    st.metric('💡 Predicted class', y_pred[0], '')
+    prediction_placeholder.metric('💡 Predicted class', y_pred[0], '')
 
     # 🔮 예측
     y_proba = rf.predict_proba(input_feature)
     
     # 📈 예측 확률 출력
-    st.subheader("📈 예측 확률")
+    prediction_placeholder.subheader("📈 예측 확률")
     prob_df = pd.DataFrame(data=y_proba, columns=rf.classes_)
-    st.write(prob_df)
+    prediction_placeholder.write(prob_df)
 
 
 if st.sidebar.button('📊 Confusion Matrix'):
-    st.empty()
+    cm_placeholder.empty()  # 기존 Confusion Matrix 삭제
     # 📊 Confusion Matrix
-    st.subheader("📊 Confusion Matrix (on Test Set)")
+    cm_placeholder.subheader("📊 Confusion Matrix (on Test Set)")
 
     y_test_pred = rf.predict(X_test)
     cm = confusion_matrix(y_test, y_test_pred, labels=rf.classes_)
@@ -126,7 +131,7 @@ if st.sidebar.button('📊 Confusion Matrix'):
     sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', xticklabels=rf.classes_, yticklabels=rf.classes_)
     ax.set_xlabel("Predicted")
     ax.set_ylabel("Actual")
-    st.pyplot(fig)
+    cm_placeholder.pyplot(fig)
 
         
         
