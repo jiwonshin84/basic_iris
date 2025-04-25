@@ -38,22 +38,6 @@ if st.sidebar.button('🎉 Brief EDA'):
     st.write(groupby_species_mean)
 
 
-
-
-
-if st.sidebar.button('📊 Confusion Matrix'):
-    # 📊 Confusion Matrix
-    st.subheader("📊 Confusion Matrix (on Test Set)")
-
-    y_test_pred = rf.predict(X_test)
-    cm = confusion_matrix(y_test, y_test_pred, labels=rf.classes_)
-
-    fig, ax = plt.subplots()
-    sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', xticklabels=rf.classes_, yticklabels=rf.classes_)
-    ax.set_xlabel("Predicted")
-    ax.set_ylabel("Actual")
-    st.pyplot(fig)
-
 if "show_slider" not in st.session_state:
     st.session_state.show_slider = False
 
@@ -104,6 +88,20 @@ if st.session_state.show_slider:
     st.subheader("📈 예측 확률")
     prob_df = pd.DataFrame(data=y_proba, columns=rf.classes_)
     st.write(prob_df)
+
+
+if st.sidebar.button('📊 Confusion Matrix'):
+    # 📊 Confusion Matrix
+    st.subheader("📊 Confusion Matrix (on Test Set)")
+
+    y_test_pred = rf.predict(X_test)
+    cm = confusion_matrix(y_test, y_test_pred, labels=rf.classes_)
+
+    fig, ax = plt.subplots()
+    sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', xticklabels=rf.classes_, yticklabels=rf.classes_)
+    ax.set_xlabel("Predicted")
+    ax.set_ylabel("Actual")
+    st.pyplot(fig)
 
         
         
