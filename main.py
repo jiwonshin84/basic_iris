@@ -38,7 +38,7 @@ if st.sidebar.button('🎉 Brief EDA'):
     st.write(groupby_species_mean)
 
 
-show_slider = st.sidebar.button('✔ 새로운 데이터 예측'):
+show_slider = st.sidebar.button('✔ 새로운 데이터 예측')
 
 if show_slider :
     st.empty()
