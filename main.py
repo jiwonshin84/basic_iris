@@ -91,6 +91,7 @@ if st.session_state.show_slider:
 
 
 if st.sidebar.button('📊 Confusion Matrix'):
+    st.empty()
     # 📊 Confusion Matrix
     st.subheader("📊 Confusion Matrix (on Test Set)")
 
