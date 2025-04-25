@@ -44,12 +44,6 @@ rf = RandomForestClassifier(max_depth=2, max_features=4, n_estimators=200, rando
 rf.fit(X_train, y_train)
 
 
-st.subheader('🌷 예측')
-
-# Apply Model to make predictions
-y_pred = rf.predict([[sepal_length, sepal_width, petal_length, petal_width]])
-st.write(y_pred)
-
 # 간단한 EDA_ 아이리스 종에 따른 4개 컬럼 평균 계산
 
 # print EDA
@@ -57,6 +51,13 @@ st.subheader('Brief EDA')
 st.write('The data is grouped by the class and the variable mean is computed for each class.')
 groupby_species_mean = df.groupby('Species').mean()
 st.write(groupby_species_mean)
+
+
+st.subheader('🌷 슬라이더 Input Features값 예측')
+
+# Apply Model to make predictions
+y_pred = rf.predict([[sepal_length, sepal_width, petal_length, petal_width]])
+# st.write(y_pred)
 
 # 슬라이더에 Input 한 컬럼 값을 데이터프레임으로 출력하기
 # print input Features
