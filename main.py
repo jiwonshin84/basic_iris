@@ -16,7 +16,7 @@ st.set_page_config(
 )
 
 # title of app
-st.title('🌷 Simple Prediction App')
+st.title('🌷 붓꽃 데이터 150개')
 
 df = pd.read_csv('https://raw.githubusercontent.com/jiwonshin84/basic_iris/refs/heads/main/Data/Iris.csv')
 df.columns= [ col_name.split('Cm')[0] for col_name in df.columns] # 컬럼명을 뒤에 cm 제거
@@ -45,6 +45,7 @@ rf.fit(X_train, y_train)
 
 # Apply Model to make predictions
 y_pred = rf.predict([[sepal_length, sepal_width, petal_length, petal_width]])
+st.subtitle('🌷 예측')
 st.write(y_pred)
 
 # 간단한 EDA_ 아이리스 종에 따른 4개 컬럼 평균 계산
