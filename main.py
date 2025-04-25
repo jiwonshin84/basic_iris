@@ -26,8 +26,6 @@ df = df.drop('Id', axis=1)
 if st.sidebar.button('🌷 붓꽃 데이터'):
     st.empty()
     st.write(df)
-else :
-    st.sidebar.write("버튼을 클릭해 주세요.")    
 
 if st.sidebar.button('🎉 Brief EDA'):
     st.empty()
@@ -38,8 +36,7 @@ if st.sidebar.button('🎉 Brief EDA'):
     st.write('The data is grouped by the class and the variable mean is computed for each class.')
     groupby_species_mean = df.groupby('Species').mean()
     st.write(groupby_species_mean)
-else:
-    st.sidebar.write("버튼을 클릭해 주세요.")    
+
 
 # input widgets
 st.sidebar.subheader('Input Features')
