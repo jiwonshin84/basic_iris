@@ -38,13 +38,12 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# 화면 비우기
-empty_space = st.empty()  # 빈 공간 할당
-
+# 화면 비우기용 placeholder
+placeholder = st.empty()
 
 
 if st.sidebar.button('🌷 붓꽃 데이터'):
-    empty_space.empty()
+    placeholder.empty()  # 이전 데이터를 지운다
     st.markdown(f"<h3 style='font-size: 24px;'>데이터 개수: {df.shape[0]}  &nbsp; / 중복 인덱스 수: {df.index.duplicated().sum()}", unsafe_allow_html=True)
 
     # 인덱스 리셋 후 1부터 시작하도록 변경
@@ -54,6 +53,7 @@ if st.sidebar.button('🌷 붓꽃 데이터'):
     st.write(df)
 
 if st.sidebar.button('🎉 Brief EDA'):
+    placeholder.empty()  # 이전 데이터를 지운다
     st.empty()  # 기존 EDA 결과 삭제
     
     # 간단한 EDA_ 아이리스 종에 따른 4개 컬럼 평균 계산
@@ -69,6 +69,7 @@ if "show_slider" not in st.session_state:
 
 # 사이드바에 버튼
 if st.sidebar.button("✔ 새로운 데이터 예측"):
+    placeholder.empty()  # 이전 데이터를 지운다
     st.session_state.show_slider = True
 
 if st.session_state.show_slider:
