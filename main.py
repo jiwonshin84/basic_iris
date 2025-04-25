@@ -100,6 +100,4 @@ if st.sidebar.button('📊Confusion Matrix'):
     ax.set_xlabel("Predicted")
     ax.set_ylabel("Actual")
     st.pyplot(fig)
-else:
-    st.sidebar.write("버튼을 클릭해 주세요.")
 
