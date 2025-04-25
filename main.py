@@ -37,10 +37,14 @@ if st.sidebar.button('🎉 Brief EDA'):
     groupby_species_mean = df.groupby('Species').mean()
     st.write(groupby_species_mean)
 
+if "show_slider" not in st.session_state:
+    st.session_state.show_slider = False
 
-show_slider = st.sidebar.button('✔ 새로운 데이터 예측')
+# 사이드바에 버튼
+if st.sidebar.button("✔ 새로운 데이터 예측"):
+    st.session_state.show_slider = True
 
-if show_slider :
+if st.session_state.show_slider:
     st.empty()
     # input widgets
     st.sidebar.subheader('Input Features')
