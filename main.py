@@ -27,7 +27,7 @@ if st.sidebar.button('🌷 붓꽃 데이터'):
     st.empty()
     st.write(f"데이터 개수: {df.shape[0]}")  # 출력: 150
     df = df.reset_index(drop=True)
-    st.write(df)
+    st.write(df.tail())
 
 if st.sidebar.button('🎉 Brief EDA'):
     st.empty()
