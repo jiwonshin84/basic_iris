@@ -81,21 +81,19 @@ st.subheader("Prediction Probabilities")
 prob_df = pd.DataFrame(data=y_proba, columns=rf.classes_)
 st.write(prob_df)
 
-# 📊 Confusion Matrix
-st.subheader("Confusion Matrix (on Test Set)")
 
-y_test_pred = rf.predict(X_test)
-cm = confusion_matrix(y_test, y_test_pred, labels=rf.classes_)
+if st.sidebar.button('Confusion Matrix'):
+    # 📊 Confusion Matrix
+    st.subheader("Confusion Matrix (on Test Set)")
 
-fig, ax = plt.subplots()
-sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', xticklabels=rf.classes_, yticklabels=rf.classes_)
-ax.set_xlabel("Predicted")
-ax.set_ylabel("Actual")
-st.pyplot(fig)
+    y_test_pred = rf.predict(X_test)
+    cm = confusion_matrix(y_test, y_test_pred, labels=rf.classes_)
 
-
-if st.sidebar.button('Click Me'):
-    st.sidebar.write("버튼이 클릭되었습니다!")
+    fig, ax = plt.subplots()
+    sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', xticklabels=rf.classes_, yticklabels=rf.classes_)
+    ax.set_xlabel("Predicted")
+    ax.set_ylabel("Actual")
+    st.pyplot(fig)
 else:
     st.sidebar.write("버튼을 클릭해 주세요.")
 
