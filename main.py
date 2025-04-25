@@ -69,3 +69,22 @@ st.write(input_feature)
 st.subheader('Output')
 st.metric('Predicted class', y_pred[0], '')
 
+
+
+# 📈 예측 확률 출력
+st.subheader("Prediction Probabilities")
+prob_df = pd.DataFrame(data=y_proba, columns=rf.classes_)
+st.write(prob_df)
+
+# 📊 Confusion Matrix
+st.subheader("Confusion Matrix (on Test Set)")
+
+y_test_pred = rf.predict(X_test)
+cm = confusion_matrix(y_test, y_test_pred, labels=rf.classes_)
+
+fig, ax = plt.subplots()
+sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', xticklabels=rf.classes_, yticklabels=rf.classes_)
+ax.set_xlabel("Predicted")
+ax.set_ylabel("Actual")
+st.pyplot(fig)
+
