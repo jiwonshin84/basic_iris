@@ -22,6 +22,24 @@ df = pd.read_csv('https://raw.githubusercontent.com/jiwonshin84/basic_iris/refs/
 df.columns= [ col_name.split('Cm')[0] for col_name in df.columns] # 컬럼명을 뒤에 cm 제거
 df = df.drop('Id', axis=1)
 
+# 사이드바 버튼 스타일 조정
+st.markdown("""
+    <style>
+        .stSidebar > div:first-child {
+            display: flex;
+            flex-direction: column;
+        }
+        .stSidebar button {
+            height: 50px;
+            width: 100%;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+    </style>
+""", unsafe_allow_html=True)
+
+
+
 
 if st.sidebar.button('🌷 붓꽃 데이터'):
     st.empty()
