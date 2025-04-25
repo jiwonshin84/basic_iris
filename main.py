@@ -35,8 +35,7 @@ if st.sidebar.button('🌷 붓꽃 데이터'):
     # 정렬된 데이터프레임 출력
     df_styled = df.style.set_properties(**{'text-align': 'center'})
     
-    st.dataframe(df_styled)
-
+    st.write(df_styled.render(), unsafe_allow_html=True)
 
 if st.sidebar.button('🎉 Brief EDA'):
     st.empty()
