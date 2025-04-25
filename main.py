@@ -22,10 +22,23 @@ df = pd.read_csv('https://raw.githubusercontent.com/jiwonshin84/basic_iris/refs/
 df.columns= [ col_name.split('Cm')[0] for col_name in df.columns] # 컬럼명을 뒤에 cm 제거
 df = df.drop('Id', axis=1)
 
-if st.sidebar.button('🌷 붓꽃 데이터)'):
+
+if st.sidebar.button('🌷 붓꽃 데이터'):
     st.empty()
     st.write(df)
 else :
+    st.sidebar.write("버튼을 클릭해 주세요.")    
+
+if st.sidebar.button('🎉 Brief EDA'):
+    st.empty()
+    # 간단한 EDA_ 아이리스 종에 따른 4개 컬럼 평균 계산
+
+    # print EDA
+    st.subheader('Brief EDA(간단한 탐색적 데이터 분석)')
+    st.write('The data is grouped by the class and the variable mean is computed for each class.')
+    groupby_species_mean = df.groupby('Species').mean()
+    st.write(groupby_species_mean)
+else:
     st.sidebar.write("버튼을 클릭해 주세요.")    
 
 # input widgets
@@ -76,17 +89,7 @@ prob_df = pd.DataFrame(data=y_proba, columns=rf.classes_)
 st.write(prob_df)
 
 
-if st.sidebar.button('🎉 Brief EDA(간단한 탐색적 데이터 분석)'):
-    st.empty()
-    # 간단한 EDA_ 아이리스 종에 따른 4개 컬럼 평균 계산
 
-    # print EDA
-    st.subheader('Brief EDA(간단한 탐색적 데이터 분석)')
-    st.write('The data is grouped by the class and the variable mean is computed for each class.')
-    groupby_species_mean = df.groupby('Species').mean()
-    st.write(groupby_species_mean)
-else:
-    st.sidebar.write("버튼을 클릭해 주세요.")    
     
 
 if st.sidebar.button('📊Confusion Matrix'):
