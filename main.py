@@ -76,6 +76,21 @@ if st.sidebar.button('🎉 Brief EDA'):
     # 출력된 정보를 Streamlit에서 표시
     st.text(s)  # 텍스트로 출력
 
+    # DataFrame의 결측값 정보 표시 (표 형식으로)
+    st.subheader('Missing Values Info')
+    missing_values = df.isnull().sum()  # 결측값 계산
+    st.table(missing_values)  # 결측값을 표 형식으로 출력
+
+    # DataFrame의 데이터 타입 및 결측값을 요약하여 표 형식으로 표시
+    st.subheader('Data Types and Missing Values Summary')
+    data_types_and_missing = pd.DataFrame({
+        'Data Type': df.dtypes,
+        'Missing Values': df.isnull().sum(),
+        'Non-Null Count': df.notnull().sum()
+    })
+    st.table(data_types_and_missing)  # 표 형식으로 출력
+
+
 
 if "show_slider" not in st.session_state:
     st.session_state.show_slider = False
