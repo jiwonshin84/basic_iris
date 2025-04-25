@@ -33,9 +33,9 @@ if st.sidebar.button('🌷 붓꽃 데이터'):
     df.index = df.index + 1  # 인덱스를 1부터 시작하도록 변경
     
     # 정렬된 데이터프레임 출력
-    st.dataframe(df.style.set_properties(**{'text-align': 'center'}))
+    dt_styled = df.style.set_properties(**{'text-align': 'center'}))
     
-    st.write(df)
+    st.write(df_styled)
 
 
 if st.sidebar.button('🎉 Brief EDA'):
